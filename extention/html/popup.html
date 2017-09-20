@@ -1,0 +1,26 @@
+<html>
+<head>
+    <title>Popup</title>
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/popup.js"></script>
+</head>
+<body>
+
+<div class="container">
+    <div class="input-group input-group-sm">
+        <span class="input-group-addon" id="sizing-addon3">ID</span>
+        <input type="text" class="form-control" placeholder="Your id"
+               aria-describedby="sizing-addon3" style="width: 300px" id="id-in" readonly="readonly">
+        <span class="input-group-btn">
+            <button class="btn btn-default" type="button" data-toggle="tooltip"
+                    data-placement="bottom" title="Warning! Last id will be lost!"
+                    id="gen-but">
+                Generate new
+            </button>
+        </span>
+    </div>
+</div>
+
+</body>
+</html>

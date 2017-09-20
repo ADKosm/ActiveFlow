@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>New tab</title>
+
+    <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <script src="../js/jquery-3.2.1.min.js"></script>
+    <script src="../js/jsrenderer.min.js"></script>
+
+    <script id="listItemTemplate" type="text/x-jsrender">
+        <div class="panel panel-primary" style="margin-top: 20px;">
+            <div class="panel-heading">
+                <h3 class="panel-title"><b>{{:title}}</b></h3>
+            </div>
+            <div class="panel-body">
+                <p>{{:description}}</p>
+                <button class="btn btn-success btn-xs editButton" data-site="{{:title}}" >Complete</button>
+                <button class="btn btn-danger btn-xs deleteButton" data-site="{{:title}}" >Delete</button>
+            </div>
+        </div>
+    </script>
+
+    <script src="../js/main.js"></script>
+</head>
+<body>
+
+
+<!--<button class="btn btn-default">Hello</button>-->
+
+<div class="container" id="tasksList">
+    <br>
+    <h1 class="noTasks" style="text-align: center;">No tasks</h1>
+</div>
+
+<!--<div>-->
+    <!--Icons made by -->
+    <!--<a href="http://www.freepik.com" title="Freepik">-->
+        <!--Freepik-->
+    <!--</a>from -->
+    <!--<a href="https://www.flaticon.com/" title="Flaticon">-->
+        <!--www.flaticon.com-->
+    <!--</a> is licensed by -->
+    <!--<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">-->
+        <!--CC 3.0 BY-->
+    <!--</a>-->
+<!--</div>-->
+
+</body>
+</html>
