@@ -1,0 +1,17 @@
+version: '3'
+services:
+  db:
+    image: mongo
+    hostname: db
+    ports:
+      - 27017:27017
+
+  backend:
+    build:
+      context: src/
+      dockerfile: Dockerfile
+    hostname: backend
+    ports:
+      - 9494:9494
+    depends_on:
+      - db

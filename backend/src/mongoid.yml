@@ -1,0 +1,6 @@
+development:
+  clients:
+    default:
+      database: mongoid
+      hosts:
+        - db:27017
