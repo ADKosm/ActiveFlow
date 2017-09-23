@@ -5,6 +5,8 @@ services:
     hostname: db_af
     ports:
       - 27017:27018
+    networks:
+      - internal
 
   backend:
     build:
@@ -15,3 +17,11 @@ services:
       - 9494:9494
     depends_on:
       - db_af
+    networks:
+      - internal
+      - backnet
+
+networks:
+  internal:
+  backnet:
+    external: true
