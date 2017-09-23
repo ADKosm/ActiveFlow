@@ -11,8 +11,13 @@
     <div class="input-group input-group-sm">
         <span class="input-group-addon" id="sizing-addon3">ID</span>
         <input type="text" class="form-control" placeholder="Your id"
-               aria-describedby="sizing-addon3" style="width: 300px" id="id-in" readonly="readonly">
+               aria-describedby="sizing-addon3" style="width: 300px" id="id-in">
         <span class="input-group-btn">
+            <button class="btn btn-default" type="button" data-toggle="tooltip"
+                    data-placement="bottom" title="Warning! Last id will be lost!"
+                    id="save-but">
+                Save
+            </button>
             <button class="btn btn-default" type="button" data-toggle="tooltip"
                     data-placement="bottom" title="Warning! Last id will be lost!"
                     id="gen-but">

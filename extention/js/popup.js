@@ -16,4 +16,9 @@ $(document).ready(function() {
         $("#id-in").val(newID);
         localStorage.setItem("af-id", newID);
     });
+
+    $("#save-but").click(function () {
+        var id = $("#id-in").val();
+        localStorage.setItem("af-id", id);
+    });
 });
