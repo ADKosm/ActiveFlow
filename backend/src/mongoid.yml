@@ -3,4 +3,4 @@ development:
     default:
       database: mongoid
       hosts:
-        - db:27017
+        - db_af:27017

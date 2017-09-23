@@ -1,8 +1,8 @@
 version: '3'
 services:
-  db:
+  db_af:
     image: mongo
-    hostname: db
+    hostname: db_af
     ports:
       - 27017:27018
 
@@ -14,4 +14,4 @@ services:
     ports:
       - 9494:9494
     depends_on:
-      - db
+      - db_af
