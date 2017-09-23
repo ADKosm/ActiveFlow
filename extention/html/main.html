@@ -5,46 +5,86 @@
     <title>New tab</title>
 
     <link href="../css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .navbar {
+            height: 20px;
+        }
+    </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/jsrenderer.min.js"></script>
+    <link href="../js/summernote/summernote.css" rel="stylesheet">
+    <script src="../js/summernote/summernote.min.js"></script>
 
     <script id="listItemTemplate" type="text/x-jsrender">
-        <div class="panel panel-primary" style="margin-top: 20px;">
+        <div class="panel {{:importance}}" style="margin-top: 20px;">
             <div class="panel-heading">
                 <h3 class="panel-title"><b>{{:title}}</b></h3>
             </div>
             <div class="panel-body">
                 <p>{{:description}}</p>
-                <button class="btn btn-success btn-xs editButton" data-site="{{:title}}" >Complete</button>
-                <button class="btn btn-danger btn-xs deleteButton" data-site="{{:title}}" >Delete</button>
+                <button class="btn btn-success btn-xs completeButton" data-site="{{:id}}" >Complete</button>
+                <button class="btn btn-danger btn-xs deleteButton" data-site="{{:id}}" >Delete</button>
             </div>
         </div>
     </script>
 
+    <script src="../js/bootstrap.js"></script>
+    <script src="../js/bootstrap-select.js"></script>
     <script src="../js/main.js"></script>
 </head>
 <body>
+    <div class="container-fluid">
+        <div class="row">
+            <div class="col-md-4" id="tasksList"><h1 class="noTasks" style="text-align: center;">No tasks</h1></div>
+            <div class="col-md-6"></div>
+        </div>
+        <div class="row">
+            <div class="col-md-4">
+                <button class="btn btn-info" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="collapseExample">New</button>
+                <div class="collapse" id="form" style="margin-top: 5px">
+                    <div>
+                        <div class="input-group input-group-sm"  style="margin-bottom: 5px">
+                            <span class="input-group-addon" id="sizing-addon3">Title</span>
+                            <input type="text" class="form-control" placeholder="Title" aria-describedby="sizing-addon3" id="title-new">
+                        </div>
+                        <div style="margin-bottom: 5px;">
+                            <select style="display: none;" title="Importance" data-width="600px" id="importance-new">
+                                <option>Low</option>
+                                <option>Medium</option>
+                                <option>High</option>
+                            </select>
+                        </div>
+                        <textarea id="desc"></textarea>
+                        <button style="margin-top: -10px;" class="btn btn-success" id="new-post">Submit</button>
+                        <br><br><br><br>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
 
 
-<!--<button class="btn btn-default">Hello</button>-->
 
-<div class="container" id="tasksList">
-    <br>
-    <h1 class="noTasks" style="text-align: center;">No tasks</h1>
-</div>
 
-<!--<div>-->
-    <!--Icons made by -->
-    <!--<a href="http://www.freepik.com" title="Freepik">-->
-        <!--Freepik-->
-    <!--</a>from -->
-    <!--<a href="https://www.flaticon.com/" title="Flaticon">-->
-        <!--www.flaticon.com-->
-    <!--</a> is licensed by -->
-    <!--<a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">-->
-        <!--CC 3.0 BY-->
-    <!--</a>-->
-<!--</div>-->
-
+    <nav class="navbar navbar-default navbar-fixed-bottom">
+        <div class="container-fluid">
+            <div class="row">
+                <div class="col-md-3 col-md-offset-9" style="line-height: 50px;">
+                    <div style="color: lightgray;">
+                        Icons made by
+                        <a href="http://www.freepik.com" title="Freepik">
+                            Freepik
+                        </a>from
+                        <a href="https://www.flaticon.com/" title="Flaticon">
+                            www.flaticon.com
+                        </a> is licensed by
+                        <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0" target="_blank">
+                            CC 3.0 BY
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </nav>
 </body>
 </html>
