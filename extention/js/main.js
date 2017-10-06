@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log(localStorage.getItem("af-id"));
 
     var userID = localStorage.getItem("af-id");
-    var url = "http://95.85.63.146:9494";
+    var url = "http://localhost:9494";//"http://95.85.63.146:9494";
 
     var importance_match = {
         0: 'panel-info',
@@ -32,12 +32,27 @@ $(document).ready(function() {
         });
     };
 
+    var restageTask = function (_id, _stage) {
+        $.ajax({
+            url: url + "/restage/"+_stage+"/"+userID,
+            type: "POST",
+            data: _id,
+            dataType: 'json'
+        }).done(function (msg) {
+            location.reload();
+        })
+    };
+
     if(userID) {
         $.ajax({
             url: url+"/get/"+userID,
             dataType: "json"
         }).done(function (msg) {
-            var data = [];
+            var data = {
+                "todo": [],
+                "progress": [],
+                "backlog": []
+            };
 
             console.log(msg);
 
@@ -48,12 +63,17 @@ $(document).ready(function() {
                 taskToRender.description = msg[i].description;
                 taskToRender.id = msg[i]._id.$oid;
                 taskToRender.importance = importance_match[msg[i].importance];
+                taskToRender.stage = msg[i].stage;
 
-                data.push(taskToRender);
+                data[taskToRender.stage].push(taskToRender);
             }
 
             var listTmpl = $.templates("#listItemTemplate");
-            if(msg.length > 0) $("#tasksList").html( listTmpl.render(data) );
+            if(msg.length > 0) {
+                $("#tasksListTodo").html(listTmpl.render(data["todo"]));
+                $("#tasksListProgress").html(listTmpl.render(data["progress"]));
+                $("#tasksListBacklog").html(listTmpl.render(data["backlog"]));
+            }
 
             $('.deleteButton').click(function () {
                 deleteTask($(this).data("site"));
@@ -62,6 +82,13 @@ $(document).ready(function() {
             $('.completeButton').click(function () {
                 completeTask($(this).data("site"));
             });
+
+            $('.restageButton').click(function () {
+                restageTask(
+                    $(this).data("site"),
+                    $(this).data("stage")
+                );
+            })
         });
     }
 

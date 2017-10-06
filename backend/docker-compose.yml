@@ -4,7 +4,7 @@ services:
     image: mongo
     hostname: db_af
     ports:
-      - 27017:27018
+      - 27017:27017
 
   backend:
     build:

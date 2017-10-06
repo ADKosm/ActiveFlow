@@ -9,6 +9,13 @@
         .navbar {
             height: 20px;
         }
+        .head-col {
+            font-weight: 900;
+            text-align: center;
+        }
+        .rbut {
+            margin-right: 5px;
+        }
     </style>
     <script src="../js/jquery-3.2.1.min.js"></script>
     <script src="../js/jsrenderer.min.js"></script>
@@ -24,6 +31,10 @@
                 <p>{{:description}}</p>
                 <button class="btn btn-success btn-xs completeButton" data-site="{{:id}}" >Complete</button>
                 <button class="btn btn-danger btn-xs deleteButton" data-site="{{:id}}" >Delete</button>
+
+                <button class="btn btn-info btn-xs pull-right rbut restageButton" data-site="{{:id}}" data-stage="backlog">Backlog</button>
+                <button class="btn btn-info btn-xs pull-right rbut restageButton" data-site="{{:id}}" data-stage="progress">In progress</button>
+                <button class="btn btn-info btn-xs pull-right rbut restageButton" data-site="{{:id}}" data-stage="todo" >To do</button>
             </div>
         </div>
     </script>
@@ -35,8 +46,18 @@
 <body>
     <div class="container-fluid">
         <div class="row">
-            <div class="col-md-4" id="tasksList"><h1 class="noTasks" style="text-align: center;">No tasks</h1></div>
-            <div class="col-md-6"></div>
+            <div class="col-md-4">
+                <h4 class="noTasks head-col">To do</h4>
+                <div id="tasksListTodo"></div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="noTasks head-col">In progress</h4>
+                <div id="tasksListProgress"></div>
+            </div>
+            <div class="col-md-4">
+                <h4 class="noTasks head-col">Backlog</h4>
+                <div id="tasksListBacklog"></div>
+            </div>
         </div>
         <div class="row">
             <div class="col-md-4">

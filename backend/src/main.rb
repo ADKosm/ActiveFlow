@@ -77,3 +77,17 @@ post '/delete/:id' do |id|
     json :status => 'error'
   end
 end
+
+post '/restage/:new_stage/:id' do |new_stage, id|
+  begin
+    request.body.rewind
+    task_id = request.body.read
+    record = Record.where(:user => id, :_id => task_id).first
+    if record
+      record.update(stage: new_stage)
+      json :status => 'ok'
+    end
+  rescue
+    json :status => 'error'
+  end
+end

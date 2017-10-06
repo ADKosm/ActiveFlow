@@ -11,4 +11,6 @@ class Record
   field :description, type: String
   field :importance, type: Integer
   enum :status, [:in_progress, :backlog, :complete]
+
+  field :stage, type: String, default: "todo"
 end
