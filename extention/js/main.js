@@ -43,52 +43,61 @@ $(document).ready(function() {
         })
     };
 
+    var setData = function (msg) {
+        var data = {
+            "todo": [],
+            "progress": [],
+            "backlog": []
+        };
+
+        console.log(msg);
+
+        for(var i = 0; i < msg.length; i++) {
+            var taskToRender = {};
+
+            taskToRender.title = msg[i].title;
+            taskToRender.description = msg[i].description;
+            taskToRender.id = msg[i]._id.$oid;
+            taskToRender.importance = importance_match[msg[i].importance];
+            taskToRender.stage = msg[i].stage;
+
+            data[taskToRender.stage].push(taskToRender);
+        }
+
+        var listTmpl = $.templates("#listItemTemplate");
+        if(msg.length > 0) {
+            $("#tasksListTodo").html(listTmpl.render(data["todo"]));
+            $("#tasksListProgress").html(listTmpl.render(data["progress"]));
+            $("#tasksListBacklog").html(listTmpl.render(data["backlog"]));
+        }
+
+        $('.deleteButton').click(function () {
+            deleteTask($(this).data("site"));
+        });
+
+        $('.completeButton').click(function () {
+            completeTask($(this).data("site"));
+        });
+
+        $('.restageButton').click(function () {
+            restageTask(
+                $(this).data("site"),
+                $(this).data("stage")
+            );
+        });
+    };
+
     if(userID) {
+        if(localStorage.getItem(userID)) {
+            setData(JSON.parse(localStorage.getItem(userID)));
+        }
+
         $.ajax({
             url: url+"/get/"+userID,
             dataType: "json"
-        }).done(function (msg) {
-            var data = {
-                "todo": [],
-                "progress": [],
-                "backlog": []
-            };
-
-            console.log(msg);
-
-            for(var i = 0; i < msg.length; i++) {
-                var taskToRender = {};
-
-                taskToRender.title = msg[i].title;
-                taskToRender.description = msg[i].description;
-                taskToRender.id = msg[i]._id.$oid;
-                taskToRender.importance = importance_match[msg[i].importance];
-                taskToRender.stage = msg[i].stage;
-
-                data[taskToRender.stage].push(taskToRender);
-            }
-
-            var listTmpl = $.templates("#listItemTemplate");
-            if(msg.length > 0) {
-                $("#tasksListTodo").html(listTmpl.render(data["todo"]));
-                $("#tasksListProgress").html(listTmpl.render(data["progress"]));
-                $("#tasksListBacklog").html(listTmpl.render(data["backlog"]));
-            }
-
-            $('.deleteButton').click(function () {
-                deleteTask($(this).data("site"));
-            });
-
-            $('.completeButton').click(function () {
-                completeTask($(this).data("site"));
-            });
-
-            $('.restageButton').click(function () {
-                restageTask(
-                    $(this).data("site"),
-                    $(this).data("stage")
-                );
-            })
+        }).done(function(msg) {
+            setData(msg);
+            localStorage.setItem(userID, JSON.stringify(msg));
         });
     }
 
