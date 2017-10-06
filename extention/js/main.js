@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log(localStorage.getItem("af-id"));
 
     var userID = localStorage.getItem("af-id");
-    var url = "http://localhost:9494";//"http://95.85.63.146:9494";
+    var url = "http://95.85.63.146:9494";
 
     var importance_match = {
         0: 'panel-info',
