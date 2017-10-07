@@ -119,6 +119,14 @@ $(document).ready(function() {
         });
     });
 
+    $("#new-but").click(function () {
+        if(localStorage.getItem("af-id")) {
+            $("#form").collapse('toggle');
+        } else {
+            $("#notifyier").collapse('toggle');
+        }
+    });
+
     $('#desc').summernote({
         height: 100,
         toolbar: [

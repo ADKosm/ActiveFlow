@@ -45,13 +45,31 @@
 </head>
 <body>
     <div class="container-fluid">
+        <div class="alert alert-success collapse" id="notifyier" style="margin-top: 5px;"  role="alert">
+            <h4 class="alert-heading"><b>Welcome!</b></h4>
+            <p>Aww yeah, you successfully install this amazing chrome extension!</p>
+            <p>
+                All data will synchronize with cloud service. Without Internet connection, you can
+                read cached version of your tasks, but you cannot interact with them.
+            </p>
+            <p>
+                First of all, generate your unique identifier. To do it, click on extension icon
+                in the upper right corner of browser (or somewhere else, if you don't use Google Chrome).
+                Click "Generate New" and you will see your new id. DON'T forget it! Without it, you can't
+                get access to your data.
+            </p>
+            <p>
+                After getting id, open new tab (or reload this) and you will be able to work with extension!
+                You can use this id to sync data between your computers - just put your id into ID field and click "Save".
+            </p>
+        </div>
         <div class="row">
             <div class="col-md-4">
-                <h4 class="noTasks head-col">To do</h4>
+                <h4 class="noTasks head-col">To Do</h4>
                 <div id="tasksListTodo"></div>
             </div>
             <div class="col-md-4">
-                <h4 class="noTasks head-col">In progress</h4>
+                <h4 class="noTasks head-col">In Progress</h4>
                 <div id="tasksListProgress"></div>
             </div>
             <div class="col-md-4">
@@ -61,7 +79,7 @@
         </div>
         <div class="row">
             <div class="col-md-4">
-                <button class="btn btn-info" data-toggle="collapse" data-target="#form" aria-expanded="false" aria-controls="collapseExample">New</button>
+                <button class="btn btn-info" data-target="#form" aria-expanded="false" aria-controls="collapseExample" id="new-but">New</button>
                 <div class="collapse" id="form" style="margin-top: 5px">
                     <div>
                         <div class="input-group input-group-sm"  style="margin-bottom: 5px">
@@ -85,12 +103,15 @@
     </div>
     <br><br><br>
 
-
-
     <nav class="navbar navbar-default navbar-fixed-bottom">
         <div class="container-fluid">
             <div class="row">
-                <div class="col-md-3 col-md-offset-9" style="line-height: 50px;">
+                <div class="col-md-3" style="line-height: 50px;">
+                    <a href="https://github.com/ADKosm/ActiveFlow">
+                        <img src="../img/GitHub_Logo.png" style="height: 50px;">
+                    </a>
+                </div>
+                <div class="col-md-3 col-md-offset-6" style="line-height: 50px;">
                     <div style="color: lightgray;">
                         Icons made by
                         <a href="http://www.freepik.com" title="Freepik">
