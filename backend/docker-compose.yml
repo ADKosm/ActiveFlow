@@ -1,10 +1,15 @@
 version: '3'
 services:
   db_af:
-    image: mongo
+    image: aashreys/mongo-auth:latest
     hostname: db_af
     environment:
-      MONGO_PASS: "${MONGO_PASS}"
+      AUTH: yes
+      MONGODB_ADMIN_USER: admin
+      MONGODB_ADMIN_PASS: "${MONGO_PASS}"
+      MONGODB_APPLICATION_DATABASE: mongoid
+      MONGODB_APPLICATION_USER: mongo_user
+      MONGODB_APPLICATION_PASS: "${MONGO_PASS}"
     ports:
       - 27017:27017
 
