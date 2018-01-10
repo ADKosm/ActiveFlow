@@ -13,6 +13,8 @@ services:
       context: src/
       dockerfile: Dockerfile
     hostname: backend
+    environment:
+      MONGO_PASS: "${MONGO_PASS}"
     ports:
       - 9494:9494
     depends_on:
