@@ -2,5 +2,7 @@ development:
   clients:
     default:
       database: mongoid
+      username: mongo_user
+      password: <%= ENV['MONGO_PASS'] %>
       hosts:
         - db_af:27017

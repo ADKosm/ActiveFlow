@@ -3,6 +3,8 @@ services:
   db_af:
     image: mongo
     hostname: db_af
+    environment:
+      MONGO_PASS: "${MONGO_PASS}"
     ports:
       - 27017:27017
 
