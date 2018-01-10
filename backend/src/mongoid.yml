@@ -5,5 +5,5 @@ development:
       hosts:
         - db_af:27017
       options:
-        username: mongo_user
+        user: mongo_user
         password: <%= ENV['MONGO_PASS'] %>
