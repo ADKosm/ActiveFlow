@@ -4,11 +4,11 @@ services:
     image: aashreys/mongo-auth:latest
     hostname: db_af
     environment:
-      AUTH: yes
-      MONGODB_ADMIN_USER: admin
+      AUTH: "yes"
+      MONGODB_ADMIN_USER: "admin"
       MONGODB_ADMIN_PASS: "${MONGO_PASS}"
-      MONGODB_APPLICATION_DATABASE: mongoid
-      MONGODB_APPLICATION_USER: mongo_user
+      MONGODB_APPLICATION_DATABASE: "mongoid"
+      MONGODB_APPLICATION_USER: "mongo_user"
       MONGODB_APPLICATION_PASS: "${MONGO_PASS}"
     ports:
       - 27017:27017
