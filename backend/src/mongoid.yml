@@ -3,7 +3,7 @@ development:
     default:
       database: mongoid
       hosts:
-        - db_af:27017
+        - db:27017
       options:
         user: mongo_user
         password: <%= ENV['MONGO_PASS'] %>

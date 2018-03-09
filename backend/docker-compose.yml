@@ -1,8 +1,8 @@
 version: '3'
 services:
-  db_af:
+  db:
     image: aashreys/mongo-auth:latest
-    hostname: db_af
+    hostname: db
     environment:
       AUTH: "yes"
       MONGODB_ADMIN_USER: "admin"
@@ -23,4 +23,4 @@ services:
     ports:
       - 9494:9494
     depends_on:
-      - db_af
+      - db
