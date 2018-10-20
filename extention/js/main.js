@@ -2,7 +2,7 @@ $(document).ready(function() {
     console.log(localStorage.getItem("af-id"));
 
     var userID = localStorage.getItem("af-id");
-    var url = "http://activeflow.kosmose.me";
+    var url = "http://activeflow.kosmose.online";
 
     var importance_match = {
         0: 'panel-info',
